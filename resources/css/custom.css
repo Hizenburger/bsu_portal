@@ -1,0 +1,13 @@
+.text-bsu-yellow {
+    color: var(--bsu-yellow) !important;
+}
+.bg-bsu-yellow {
+    background-color: var(--bsu-yellow) !important;
+}
+
+.text-bsu-green {
+    color: var(--bsu-green) !important;
+}
+.bg-bsu-green {
+    background-color: var(--bsu-green) !important;
+}

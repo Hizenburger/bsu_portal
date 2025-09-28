@@ -1,0 +1,54 @@
+@import 'tailwindcss';
+
+@source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
+@source '../../storage/framework/views/*.php';
+@source '../**/*.blade.php';
+@source '../**/*.js';
+
+
+@theme {
+    --font-sans: 'Instrument Sans', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
+        'Segoe UI Symbol', 'Noto Color Emoji';
+}
+@import '@fortawesome/fontawesome-free/css/all.min.css';
+
+:root {
+    --bsu-yellow: #c8b273; /* gold */
+    --bsu-green: #009b77;  /* dark green */
+    --bsu-light-green: #b2e1d6; /* light green */
+    --bsu-light-yellow: #ded0ab; /* light yellow */
+}
+
+
+
+.text-bsu-yellow {
+    color: var(--bsu-yellow) !important;
+}
+.bg-bsu-yellow {
+    background-color: var(--bsu-yellow) !important;
+}
+
+.text-bsu-green {
+    color: var(--bsu-green) !important;
+}
+.bg-bsu-green {
+    background-color: var(--bsu-green) !important;
+}
+.bg-bsu-light-green {
+    background-color: var(--bsu-light-green) !important;
+}
+.bg-bsu-light-yellow {
+    background-color: var(--bsu-light-yellow) !important;
+}
+
+.hover\:bg-bsu-yellow:hover {
+    background-color: var(--bsu-yellow) !important;
+}
+
+.bg-portal {
+    background-image: url('../img/BACKGROUND_ART.jpg');
+    background-size: cover;  
+    background-position: center;  
+    background-repeat: no-repeat; 
+}
+
