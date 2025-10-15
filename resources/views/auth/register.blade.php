@@ -21,8 +21,8 @@
                                     value="{{ old('first_name') }}"
                                     class="p-2 pr-10 rounded-xl border w-full focus:outline-yellow-200">
                                 @error('first_name')
-                                    <div class="label mt-2 mb-2 text-sm">
-                                        <span class="label-text-alt text-error">{{ $message }}</span>
+                                    <div class="relative label mt-2 mb-2 text-xs text-white bg-red-500 p-1 rounded">
+                                        <span class="label-text-alt">{{ $message }}</span>
                                     </div>
                                 @enderror
                             </div>
@@ -34,8 +34,8 @@
                                     value="{{ old('last_name') }}"
                                     class="p-2 pr-10 rounded-xl border w-full focus:outline-yellow-200">
                                 @error('last_name')
-                                    <div class="label mt-2 mb-2 text-sm">
-                                        <span class="label-text-alt text-error">{{ $message }}</span>
+                                    <div class="label mt-2 mb-2 text-xs text-white bg-red-500 p-1 rounded">
+                                        <span class="label-text-alt">{{ $message }}</span>
                                     </div>
                                 @enderror
                             </div>
@@ -48,8 +48,8 @@
                                 value="{{ old('email') }}"
                                 class="p-2 pr-10 rounded-xl border w-full focus:outline-yellow-200">
                             @error('email')
-                                <div class="label mt-2 mb-2 text-sm">
-                                    <span class="label-text-alt text-error">{{ $message }}</span>
+                                <div class="label mt-2 mb-2 text-xs text-white bg-red-500 p-1 rounded">
+                                    <span class="label-text-alt">{{ $message }}</span>
                                 </div>
                             @enderror
                         </div>
@@ -65,8 +65,8 @@
                                     data-toggle="password" data-target="password"></i>
                             </div>
                             @error('password')
-                                <div class="label mt-2 mb-2 text-sm">
-                                    <span class="label-text-alt text-error">{{ $message }}</span>
+                                <div class="label mt-2 mb-2 text-xs text-white bg-red-500 p-1 rounded">
+                                    <span class="label-text-alt">{{ $message }}</span>
                                 </div>
                             @enderror
 
@@ -88,9 +88,11 @@
                     </form>
 
                     <div class="mt-4 text-sm flex justify-between items-center container-mr">
-                        <p class="mr-3 md:mr-0 text-bsu-yellow font-bold">Already have an account?</p>
+                        <p class="mr-3 md:mr-0 text-bsu-yellow font-bold">If you already have an account..</p>
                         <a href="{{ route('login') }}"
-                            class="register text-white bg-bsu-yellow rounded-xl py-2 px-5 hover:scale-110 font-semibold duration-300">Login</a>
+                            class="register text-white bg-bsu-yellow rounded-xl py-2 px-5 hover:scale-110 font-semibold duration-300">
+                            Sign up
+                        </a>
                     </div>
                 </div>
                 <div class="md:block hidden w-1/2">
