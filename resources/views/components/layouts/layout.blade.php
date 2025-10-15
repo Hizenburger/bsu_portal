@@ -31,7 +31,7 @@
                 <!-- Logout Button -->
                 <form method="POST" action="/logout" class="inline">
                     @csrf
-                    <button type="submit" class="btn btn-ghost btn-sm">Logout</button>
+                    <button type="submit" class="bg-bsu-light-yellow hover:bg-bsu-yellow cursor-pointer hover:text-white hover:scale-110 duration-300 px-4 py-2 rounded-full">Logout</button>
                 </form>
             </div>
 

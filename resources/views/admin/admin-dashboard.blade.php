@@ -1,4 +1,4 @@
-<x-layouts.layout>
+<x-layouts.admin-layout>
     <x-slot:title>
         Admin Dashboard
     </x-slot:title>
@@ -8,4 +8,6 @@
         <p class="text-lg">Manage users, view reports, and configure settings.</p>
     </div>
 
-</x-layouts.layout>
+    @include('announcements.index')
+
+</x-layouts.admin-layout>

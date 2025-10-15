@@ -1,13 +1,12 @@
-import './bootstrap';
-import Alpine from 'alpinejs';
+import "./bootstrap";
+import Alpine from "alpinejs";
 
 window.Alpine = Alpine;
 Alpine.start();
 
-
 document.addEventListener("DOMContentLoaded", () => {
     // Find all icons with the attribute data-toggle="password"
-    document.querySelectorAll('[data-toggle="password"]').forEach(toggle => {
+    document.querySelectorAll('[data-toggle="password"]').forEach((toggle) => {
         toggle.addEventListener("click", function () {
             const input = document.getElementById(this.dataset.target);
 
@@ -24,5 +23,24 @@ document.addEventListener("DOMContentLoaded", () => {
             }
         });
     });
-});
 
+    const sidebar = document.getElementById("sidebar");
+    const openBtn = document.getElementById("openSidebar");
+    const closeBtn = document.getElementById("closeSidebar");
+
+    if (openBtn) {
+        openBtn.addEventListener("click", () => {
+            sidebar.classList.add("translate-x-0");
+            sidebar.classList.add("md:relative");
+        });
+    }
+
+    if (closeBtn) {
+        closeBtn.addEventListener("click", () => {
+            sidebar.classList.remove("translate-x-0");
+            sidebar.classList.remove("md:translate-x-0");
+            sidebar.classList.remove("md:relative");
+            // sidebar.classList.add("-translate-x-0")
+        });
+    }
+});

@@ -5,6 +5,7 @@
     <div>
         <section class="min-h-screen flex box-border justify-center items-center">
             <div class="bg-bsu-green rounded-2xl flex max-w-3xl p-5 items-center">
+
                 <div class="md:w-1/2 px-8">
                     <h2 class="font-bold text-3xl text-white">Login</h2>
                     <p class="text-sm mt-4 text-white">Login to your BSU Account</p>
@@ -14,12 +15,16 @@
                         <!-- Email -->
                         <div class="relative w-full">
                             <label for="email" class="block mb-1 font-medium">Email</label>
-                            <input type="email" name="email" id="email" placeholder="Email"
-                                class="p-2 pr-10 rounded-xl border w-full focus:outline-yellow-200 @error('email') input-error @enderror">
+                            <div class="relative">
+                                <i class="fa-solid fa-envelope absolute left-3 top-1/2 -translate-y-1/2"></i>
+                                <input type="email" name="email" id="email" placeholder="Email"
+                                    class="p-2 pl-10 rounded-xl border w-full focus:outline-yellow-200 @error('email') input-error @enderror">
+                            </div>
+
                         </div>
 
                         @error('email')
-                            <div class="label text-sm">
+                            <div class="label text-xs text-white bg-red-500 p-1 rounded">
                                 <span class="label-text-alt text-error">{{ $message }}</span>
                             </div>
                         @enderror
@@ -28,21 +33,23 @@
                         <div class="relative w-full mt-4">
                             <label for="password" class="block mb-1 font-medium">Password</label>
                             <div class="relative">
+                                <i class="fa-solid fa-lock absolute left-3 top-1/2 -translate-y-1/2"></i>
                                 <input type="password" name="password" id="password" placeholder="Password"
-                                    class="p-2 pr-10 rounded-xl border w-full focus:outline-yellow-200 @error('password') input-error @enderror">
-                                <!-- Eye toggle icon -->
-                                <i class="fa-solid fa-eye absolute right-3 top-1/2 -translate-y-1/2 text-bsu-yellow cursor-pointer hover:scale-110 duration-300"
+                                    class="p-2 pr-10 pl-10 rounded-xl border w-full focus:outline-yellow-200 @error('password') input-error @enderror">
+                                <i class="fa-solid fa-eye absolute right-3 top-1/2 -translate-y-1/2 cursor-pointer hover:scale-110 duration-300"
                                     data-toggle="password" data-target="password"></i>
                             </div>
                         </div>
 
                         @error('password')
-                            <div class="label text-sm">
+                            <div class="label text-xs text-white bg-red-500 p-1 rounded">
                                 <span class="label-text-alt text-error">{{ $message }}</span>
                             </div>
                         @enderror
 
-                        <button class="bg-bsu-yellow text-white py-2 rounded-xl hover:scale-105 duration-300 font-medium" type="submit">
+                        <button
+                            class="bg-bsu-yellow text-white py-2 rounded-xl hover:scale-105 duration-300 font-medium"
+                            type="submit">
                             Login
                         </button>
                     </form>
