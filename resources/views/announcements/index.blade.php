@@ -14,6 +14,6 @@
             @endforeach
         </ul>
     @else
-        <p class="text-gray-500 italic">No announcements yet.</p>
+        <p class="text-gray-500 italic">No announcements yet. test</p>
     @endif
 </div>
