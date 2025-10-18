@@ -8,7 +8,7 @@
         <p class="text-lg">Manage users, view reports, and configure settings.</p>
     </div>
 
-    <div class="flex justify-center align-items-center max-w-3/4">
+    <div class="flex justify-center">
             @include('announcements.index')
     </div>
 

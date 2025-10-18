@@ -1,4 +1,4 @@
-<div>
+<div class="w-3/4">
     <h2 class="text-2xl font-bold mb-4">Announcements</h2>
     @if ($announcements->count())
         <ul class="space-y-2">

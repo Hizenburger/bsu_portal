@@ -118,6 +118,13 @@
     transition: all 0.6 ease;
 }
 
+.dropdown-sidebar {
+   background-color: var(--bsu-green);
+    padding-top: 60px;
+    border-end-end-radius: 25px;
+    border-end-start-radius: 25px;
+}
+
 .dropdown-sidebar.collapsed {
     height: 0;
     opacity: 0;
@@ -163,4 +170,14 @@
 .tooltip:hover .tooltiptext {
     visibility: visible;
     opacity: 1;
+}
+
+.user-name {
+    font-size: smaller;
+    color: white;
+}
+
+.user-role {
+    font-size: x-small;
+    color: white;
 }

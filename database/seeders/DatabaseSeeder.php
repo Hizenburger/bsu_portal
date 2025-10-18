@@ -22,9 +22,35 @@ class DatabaseSeeder extends Seeder
             'email' => 'admin@example.com',
             'password' => bcrypt('password'),
             'role' => 'admin',
-            'profile_picture' =>'',
+            'profile_picture' => 'img/profile-pictures/MARCH7.jpg',
         ]);
 
+        Announcement::create([
+            'user_id' => 1,
+            'title' => 'First Announcement',
+            'content' => 'This is the content of the first Announcement',
+        ]);
+
+        Announcement::create([
+            'user_id' => 1,
+            'title' => 'First Announcement',
+            'content' => 'This is the content of the first Announcement',
+        ]);
+        Announcement::create([
+            'user_id' => 1,
+            'title' => 'First Announcement',
+            'content' => 'This is the content of the first Announcement',
+        ]);
+        Announcement::create([
+            'user_id' => 1,
+            'title' => 'First Announcement',
+            'content' => 'This is the content of the first Announcement',
+        ]);
+        Announcement::create([
+            'user_id' => 1,
+            'title' => 'First Announcement',
+            'content' => 'This is the content of the first Announcement',
+        ]);
         Announcement::create([
             'user_id' => 1,
             'title' => 'First Announcement',

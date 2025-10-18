@@ -31,11 +31,17 @@
  <aside class="custom-sidebar h-full">
 
      <a class="nav-image" href="#">
-         <img src="{{ asset('img/profile-pictures/MARCH7.jpg') }}" class="square-image" alt="Profile Picture" />
+         <img src="{{ asset(auth()->user()->profile_picture) }}" class="square-image" alt="Profile Picture" />
      </a>
 
-     <nav class="bg-bsu-green pt-25 rounded-b-2xl dropdown-sidebar">
+     <nav class="dropdown-sidebar collapsed">
          <ul class="flex flex-col h-full items-center py-4 gap-5">
+
+             <li>
+                 <span class="user-name">{{ Str::ucfirst(auth()->user()->first_name) . ' ' . Str::ucfirst(auth()->user()->last_name) }}</span>
+                 <span class="user-role">{{ Str::upper(auth()->user()->role) }}</span>
+             </li>
+
              <li class="tooltip">
                  <a class="icon-container {{ request()->is(auth()->user()->role . '/dashboard') ? 'active' : '' }}"
                      href="{{ route('dashboard', auth()->user()->role) }}">
@@ -43,7 +49,6 @@
                      <span class="tooltiptext">Dashboard</span>
                  </a>
              </li>
-
 
              <li class="tooltip">
                  <a class="icon-container {{ request()->is('profile') }}" href="">
