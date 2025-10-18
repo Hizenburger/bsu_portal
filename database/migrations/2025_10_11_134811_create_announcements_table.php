@@ -9,6 +9,8 @@ return new class extends Migration
     /**
      * Run the migrations.
      */
+
+
     public function up(): void
     {
         Schema::create('announcements', function (Blueprint $table) {
@@ -16,6 +18,7 @@ return new class extends Migration
             $table->foreignId('user_id')->nullable()->constrained('users')->cascadeOnDelete();
             $table->string('title', 255);
             $table->text('content', 255);
+            $table->string('image_url')->nullable();
             $table->timestamps();
         });
     }

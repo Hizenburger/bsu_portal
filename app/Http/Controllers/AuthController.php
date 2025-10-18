@@ -20,7 +20,7 @@ class AuthController extends Controller
         $validated = $request->validate([
             'first_name' => 'required|string|max:255',
             'last_name' => 'required|string|max:255',
-            'email' => 'required|string|email|max:255|unique:users',
+            'email' => 'required|string|email|max:255|unique:users', //no duplicate
             'password' => 'required|string|min:8|confirmed',
         ]);
 
@@ -66,7 +66,7 @@ class AuthController extends Controller
             ->onlyInput('email');
     }
 
-    public function dashboard()
+    public function dashboard($role)
     {
         $UserRole = Auth::user()->role;
          $announcements = Announcement::latest()->get();
@@ -84,6 +84,7 @@ class AuthController extends Controller
 
         Auth::logout($user);
 
+        //security reasons
         $request->session()->invalidate();
         $request->session()->regenerateToken();
 

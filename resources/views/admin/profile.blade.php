@@ -1,6 +1,6 @@
 <x-layouts.admin-layout>
     <x-slot:title>
-        Admin Dashboard
+        Profile
     </x-slot:title>
 
     <div class="text-center">
@@ -8,9 +8,6 @@
         <p class="text-lg">Manage users, view reports, and configure settings.</p>
     </div>
 
-    <div class="flex justify-center align-items-center max-w-3/4">
-            @include('announcements.index')
-    </div>
 
 
 </x-layouts.admin-layout>
