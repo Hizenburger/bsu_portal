@@ -4,6 +4,8 @@ use Illuminate\Support\Facades\Route;
 // use App\Http\Controllers\HomeController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\AnnouncementsController;
+use App\Http\Controllers\StudentController;
+use App\Http\Controllers\AdminController;
 
 //example Route
 Route::get('/', function () {
@@ -26,26 +28,38 @@ Route::get('/', function () {
 //     Route::get('/dashboard', 'admin.admin-dashboard');
 // });
 
-Route::get('/announcements', [AnnouncementsController::class, 'index'])->name('announcements.index');
-Route::get('/announcements/create', [AnnouncementsController::class, 'create'])->name('announcements.create');
-Route::post('/announcements', [AnnouncementsController::class, 'store'])->name('announcements.store');
-Route::get('/announcements/{id}/edit', [AnnouncementsController::class, 'edit'])->name('announcements.edit');
-Route::put('/announcements/{id}', [AnnouncementsController::class, 'update'])->name('announcements.update');
-Route::delete('/announcements/{id}', [AnnouncementsController::class, 'destroy'])->name('announcements.destroy');
+Route::middleware('prevent-back-history')->group(function () {
+    Route::get('/announcements', [AnnouncementsController::class, 'index'])->name('announcements.index');
+    Route::get('/announcements/create', [AnnouncementsController::class, 'create'])->name('announcements.create');
+    Route::post('/announcements', [AnnouncementsController::class, 'store'])->name('announcements.store');
+    Route::get('/announcements/{id}/edit', [AnnouncementsController::class, 'edit'])->name('announcements.edit');
+    Route::put('/announcements/{id}', [AnnouncementsController::class, 'update'])->name('announcements.update');
+    Route::delete('/announcements/{id}', [AnnouncementsController::class, 'destroy'])->name('announcements.destroy');
 
-Route::middleware('guest')->group(function () {
-    // Login Routes
-    Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login');
-    Route::post('/login', [AuthController::class, 'login']);
-    // Register Routes
-    Route::get('/register', [AuthController::class, 'showRegisterForm'])->name('register');
-    Route::post('/register', [AuthController::class, 'register']);
-});
+    Route::middleware('guest')->group(function () {
+        // Login Routes
+        Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login');
+        Route::post('/login', [AuthController::class, 'login']);
+        // Register Routes
+        Route::get('/register', [AuthController::class, 'showRegisterForm'])->name('register');
+        Route::post('/register', [AuthController::class, 'register']);
+    });
 
-//Register Routes
-Route::middleware('auth')->group(function () {
-    Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
-    Route::get('{role}/dashboard', [AuthController::class, 'dashboard'])
-        ->name('dashboard');
-   
+    //only logged in users Routes
+    Route::middleware('auth')->group(function () {
+        Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
+    });
+
+    //admin routes
+    Route::middleware('auth', 'role:admin')->group(function () {
+        Route::get('admin/dashboard', [AdminController::class, 'dashboard'])
+            ->name('dashboard');
+    });
+
+    //student routes
+
+    Route::middleware('auth', 'role:student')->group(function () {
+        Route::get('student/dashboard', [StudentController::class, 'dashboard'])
+            ->name('dashboard');
+    });
 });

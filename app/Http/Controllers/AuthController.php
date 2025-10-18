@@ -6,7 +6,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
-Use App\Models\Announcement;
+use App\Models\Announcement;
 
 class AuthController extends Controller
 {
@@ -51,14 +51,18 @@ class AuthController extends Controller
             'password' => 'required',
         ]);
 
+
+
         // Attempt to log in
         if (Auth::attempt($credentials, $request->boolean('remember'))) {
             // Regenerate session for security
             $request->session()->regenerate();
 
+            $role = Auth::user()->role;
             // Redirect to intended page or home
-            return redirect()->intended('/dashboard')->with('success', 'Welcome back!');
+            return redirect()->intended("$role/dashboard")->with('success', 'Welcome back!');
         }
+
 
         // If login fails, redirect back with error
         return back()
@@ -66,17 +70,6 @@ class AuthController extends Controller
             ->onlyInput('email');
     }
 
-    public function dashboard($role)
-    {
-        $UserRole = Auth::user()->role;
-         $announcements = Announcement::latest()->get();
-
-        if ($UserRole === 'admin') {
-            return view('admin.admin-dashboard', compact('announcements'));
-        } elseif ($UserRole === 'student') {
-            return view('student.student-dashboard');
-        }
-    }
 
     public function logout(Request $request)
     {
