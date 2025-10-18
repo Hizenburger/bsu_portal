@@ -19,28 +19,7 @@
 <body>
     <div class="relative min-h-screen md:flex">
         <!-- sidebar -->
-        <aside id="sidebar"
-            class="z-10 bg-bsu-green text-white w-64 px-2 py-4 absolute inset-y-0 left-0 md:relative transform -translate-x-full md:translate-x-0 overflow-y-auto transition ease-in-out duration-200 shadow-lg">
-            <!--logo-->
-            <div class="flex items-center justify-between px-2">
-                <div class="flex items-center gap-2">
-                    <a href="">
-                        <img src="{{ asset('img/BSU_BOKOD_LOGO.png') }}" class="block h-10 w-auto fill-current"
-                            alt="BSU Logo" />
-                    </a>
-                    <span class="2xl font-extrabold">Admin</span>
-                </div>
-                <button id="closeSidebar" type="button"
-                    class="inline-flex p-2 justify-center items-center rounded-md bg-white text-red-500 hover:text-white hover:bg-red-500 focus:outline-none cursor-pointer">
-                    <i class="fa-solid fa-xmark"></i>
-                </button>
-            </div>
-
-            <!--navigation links-->
-            <nav>
-
-            </nav>
-        </aside>
+       @include('admin.admin-sidebar')
         <!-- Main Content -->
         <main class="w-screen">
             <nav class="bg-bsu-green shadow-lg">
@@ -51,14 +30,6 @@
                                 class="inline-flex items-center justify-center p-2 rounded cursor-pointer hover:bg-green-200">
                                 <i class="fa-solid fa-bars"></i>
                             </button>
-                        </div>
-                        <div>
-                            <!-- Logout Button -->
-                            <form method="POST" action="/logout" class="inline">
-                                @csrf
-                                <button type="submit"
-                                    class="bg-bsu-light-yellow hover:bg-bsu-yellow cursor-pointer hover:text-white hover:scale-110 duration-300 px-4 py-2 rounded-full">Logout</button>
-                            </form>
                         </div>
                     </div>
                 </div>

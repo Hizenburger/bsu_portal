@@ -1,25 +1,23 @@
-@import 'tailwindcss';
+@import "tailwindcss";
 
 @source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
 @source '../../storage/framework/views/*.php';
 @source '../**/*.blade.php';
 @source '../**/*.js';
 
-
 @theme {
-    --font-sans: 'Instrument Sans', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
-        'Segoe UI Symbol', 'Noto Color Emoji';
+    --font-sans: "Instrument Sans", ui-sans-serif, system-ui, sans-serif,
+        "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol",
+        "Noto Color Emoji";
 }
-@import '@fortawesome/fontawesome-free/css/all.min.css';
+@import "@fortawesome/fontawesome-free/css/all.min.css";
 
 :root {
     --bsu-yellow: #c8b273; /* gold */
-    --bsu-green: #009b77;  /* dark green */
+    --bsu-green: #009b77; /* dark green */
     --bsu-light-green: #b2e1d6; /* light green */
     --bsu-light-yellow: #ded0ab; /* light yellow */
 }
-
-
 
 .text-bsu-yellow {
     color: var(--bsu-yellow) !important;
@@ -46,9 +44,123 @@
 }
 
 .bg-portal {
-    background-image: url('../img/BACKGROUND_ART.jpg');
-    background-size: cover;  
-    background-position: center;  
-    background-repeat: no-repeat; 
+    background-image: url("../img/BACKGROUND_ART.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
 }
 
+.square-image {
+    width: 100px;
+    aspect-ratio: 1/1;
+    object-fit: cover;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.square-image:hover {
+    transform: scale(1.2);
+    transition: 0.3s ease;
+    border: 5px solid var(--bsu-green);
+}
+
+.dropdown-sidebar {
+    text-align: center;
+    position: absolute;
+    height: 80%;
+    top: 30px;
+    z-index: 1;
+    justify-content: space-between;
+    width: 80%;
+    transition: all 0.3s ease;
+}
+
+.custom-sidebar {
+    position: absolute;
+    top: 5px;
+    left: 15px;
+    display: flex; /* required for justify-content to work */
+    flex-direction: column;
+    /* justify-content: center;    centers children horizontally */
+    align-items: center; /* vertical */
+}
+
+.nav-image {
+    z-index: 2;
+    background-color: white;
+    border-radius: 50%;
+    border: 2px solid var(--bsu-green);
+}
+
+.nav-icon {
+    display: flex;
+    color: white;
+    font-size: x-large;
+    aspect-ratio: 1/1;
+    padding: 10px;
+    justify-content: center;
+    width: fit-content;
+}
+
+.icon-container:hover .nav-icon {
+    color: var(--bsu-yellow);
+
+    background: white;
+    border-radius: 50%;
+}
+
+.icon-container.active .nav-icon {
+    color: var(--bsu-yellow);
+    width: fit-content;
+    background: white;
+    border-radius: 50%;
+    transform: scale(1.2);
+    transition: all 0.6 ease;
+}
+
+.dropdown-sidebar.collapsed {
+    height: 0;
+    opacity: 0;
+    overflow: hidden;
+    transition: all 0.3 ease;
+    padding: 0;
+}
+
+/* Tooltip container */
+.tooltip {
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+}
+
+/* Tooltip text */
+.tooltiptext {
+    visibility: hidden;
+    position: absolute;
+    left: 80%; /* move it to the right side of the icon */
+    top: 50%; /* vertically center */
+    transform: translateY(-50%); /* adjust for actual height */
+    width: max-content;
+    max-width: 150px;
+    background-color: var(--bsu-green);
+    color: white;
+    text-align: center;
+    padding: 15px;
+    border-radius: 0 50px 50px 0;
+    z-index: -1;
+    white-space: nowrap; /* keep text in one line */
+    font-size: 0.85rem;
+}
+
+/* Optional: little fade-in effect */
+.tooltiptext {
+    padding-left: 20px;
+    opacity: 0;
+    transition: opacity 0.2s ease;
+}
+
+/* Show the tooltip text on hover */
+.tooltip:hover .tooltiptext {
+    visibility: visible;
+    opacity: 1;
+}

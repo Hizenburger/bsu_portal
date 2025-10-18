@@ -24,23 +24,32 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     });
 
-    const sidebar = document.getElementById("sidebar");
-    const openBtn = document.getElementById("openSidebar");
-    const closeBtn = document.getElementById("closeSidebar");
+    // const sidebar = document.getElementById("sidebar");
+    // const openBtn = document.getElementById("openSidebar");
+    // const closeBtn = document.getElementById("closeSidebar");
 
-    if (openBtn) {
-        openBtn.addEventListener("click", () => {
-            sidebar.classList.add("translate-x-0");
-            sidebar.classList.add("md:relative");
-        });
-    }
+    // if (openBtn) {
+    //     openBtn.addEventListener("click", () => {
+    //         sidebar.classList.add("translate-x-0");
+    //         sidebar.classList.add("md:relative");
+    //     });
+    // }
 
-    if (closeBtn) {
-        closeBtn.addEventListener("click", () => {
-            sidebar.classList.remove("translate-x-0");
-            sidebar.classList.remove("md:translate-x-0");
-            sidebar.classList.remove("md:relative");
-            // sidebar.classList.add("-translate-x-0")
-        });
-    }
+    // if (closeBtn) {
+    //     closeBtn.addEventListener("click", () => {
+    //         sidebar.classList.remove("translate-x-0");
+    //         sidebar.classList.remove("md:translate-x-0");
+    //         sidebar.classList.remove("md:relative");
+    //         // sidebar.classList.add("-translate-x-0")
+    //     });
+    // }
+
+    //sidebar
+    const navImage = document.querySelector(".nav-image");
+    const sidebar = document.querySelector(".dropdown-sidebar");
+
+    navImage.addEventListener("click", (e) => {
+        e.preventDefault();
+        sidebar.classList.toggle("collapsed");
+    });
 });

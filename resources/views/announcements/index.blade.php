@@ -1,7 +1,6 @@
 <div>
     <h2 class="text-2xl font-bold mb-4">Announcements</h2>
-
-    @if($announcements->count())
+    @if ($announcements->count())
         <ul class="space-y-2">
             @foreach ($announcements as $announcement)
                 <li class="border rounded p-3">
@@ -14,6 +13,6 @@
             @endforeach
         </ul>
     @else
-        <p class="text-gray-500 italic">No announcements yet.</p>
+        <p class="text-gray-500 italic">No announcements yet</p>
     @endif
 </div>

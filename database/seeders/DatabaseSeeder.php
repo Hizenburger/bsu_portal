@@ -19,14 +19,16 @@ class DatabaseSeeder extends Seeder
         User::create([
             'first_name' => 'admin',
             'last_name'  => 'User',
-            'email' => 'test@example.com',
+            'email' => 'admin@example.com',
             'password' => bcrypt('password'),
             'role' => 'admin',
+            'profile_picture' =>'',
         ]);
 
         Announcement::create([
+            'user_id' => 1,
             'title' => 'First Announcement',
-            'content' => 'This is the content of the first Announcement'
+            'content' => 'This is the content of the first Announcement',
         ]);
     }
 }
