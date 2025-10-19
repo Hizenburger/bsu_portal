@@ -5,12 +5,14 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>{{ isset($title) ? $title . ' - BSU' : 'BSU' }}</title>
+    {{-- <title>{{ isset($title) ? $title . ' - BSU' : 'BSU' }}</title> --}}
+    <title>@yield('title', 'BSU')</title>
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=instrument-sans:400,500,600" rel="stylesheet" />
     <link rel="icon" type="image/png" href="{{ asset('img/BSU_BOKOD_LOGO.png') }}">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 
 </head>
@@ -18,7 +20,7 @@
 <body>
     <div class="relative min-h-screen md:flex">
         <!-- sidebar -->
-       @include('admin.admin-sidebar')
+        @include('components.sidebar')
         <!-- Main Content -->
         <main class="w-screen">
             <nav class="bg-bsu-green shadow-lg">
@@ -33,8 +35,9 @@
                     </div>
                 </div>
             </nav>
+            {{-- Page Content --}}
             <div>
-                {{ $slot }}
+                @yield('content')
             </div>
         </main>
     </div>

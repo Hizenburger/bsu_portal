@@ -1,11 +1,17 @@
-@extends('layouts.layout')
+<x-layouts.layout>
+    <x-slot:title>
+        Admin Dashboard
+    </x-slot:title>
 
-@section('title', Str::ucfirst(auth()->user()->role) . ' Dashboard')
+    <div class="text-center">
+        <h1 class="text-4xl font-bold mb-4">Welcome {{ auth()->user()->first_name }} to the Admin Dashboard</h1>
+        <p class="text-lg">Manage users, view reports, and configure settings.</p>
+    </div>
 
-@section('content')
-
-    <div class="flex justify-center">
+    <div class="w-full">
         @include('announcements.index')
     </div>
 
-@endsection
+
+
+</x-layouts.layout>
