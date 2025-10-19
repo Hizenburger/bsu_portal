@@ -10,6 +10,6 @@ class AdminController extends Controller
     public function dashboard()
     {
         $announcements = Announcement::latest()->get();
-        return view('admin.admin-dashboard', compact('announcements'));
+        return view('users.admin.dashboard', compact('announcements'));
     }
 }
