@@ -1,7 +1,8 @@
-<x-layouts.layout>
-    <x-slot:title>
-        Student Dashboard
-    </x-slot:title>
+@extends('layouts.layout')
+
+@section('title', '{{ Str::upper(auth()->user()->role) }} Dashboard')
+
+@section('content')
 
     <div class="text-center">
         <h1 class="text-4xl font-bold mb-4">Welcome {{ auth()->user()->first_name }} to the Student Dashboard</h1>
