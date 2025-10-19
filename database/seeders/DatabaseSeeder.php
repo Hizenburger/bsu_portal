@@ -29,6 +29,7 @@ class DatabaseSeeder extends Seeder
             'user_id' => 1,
             'title' => 'First Announcement',
             'content' => 'This is the content of the first Announcement',
+            'image_url' => 'img\announcements\announcement1.jpg'
         ]);
 
         Announcement::create([

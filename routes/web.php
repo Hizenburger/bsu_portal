@@ -6,6 +6,8 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\AnnouncementsController;
 use App\Http\Controllers\StudentController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\LikeController;
+
 
 //example Route
 Route::get('/', function () {
@@ -58,8 +60,12 @@ Route::middleware('prevent-back-history')->group(function () {
 
     //student routes
 
-    Route::middleware('auth', 'role:student')->group(function () {
+    Route::middleware('auth')->group(function () {
         Route::get('student/dashboard', [StudentController::class, 'dashboard'])
             ->name('dashboard');
+
+        Route::post('/announcements/{announcement}/like', [LikeController::class, 'like'])->name('announcements.like');
+        Route::delete('/announcements/{announcement}/like', [LikeController::class, 'unlike'])->name('announcements.unlike');
+
     });
 });

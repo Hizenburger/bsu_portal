@@ -13,6 +13,7 @@ class AnnouncementsController extends Controller
     //return all announcements
     public function index()
     {
+        //eager loading to prevent multiple queries when looping
         $announcements = Announcement::with('user')->latest()->get();
 
         return view('dashboard', ['announcements' => $announcements]);
@@ -118,4 +119,5 @@ class AnnouncementsController extends Controller
 
         return redirect()->route('dashboard')->with('success', 'Announcement deleted');
     }
+
 }
