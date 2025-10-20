@@ -28,7 +28,7 @@
      </nav>
  </aside> --}}
 
- <aside class="custom-sidebar h-full">
+ <aside class="custom-sidebar h-screen">
 
      <a class="nav-image" href="#">
          <img src="{{ asset(auth()->user()->profile_picture) }}" class="square-image" alt="Profile Picture" />
@@ -38,13 +38,14 @@
          <ul class="flex flex-col h-full items-center py-4 gap-5">
 
              <li>
-                 <span class="user-name">{{ Str::ucfirst(auth()->user()->first_name) . ' ' . Str::ucfirst(auth()->user()->last_name) }}</span>
+                 <span
+                     class="user-name">{{ Str::ucfirst(auth()->user()->first_name) . ' ' . Str::ucfirst(auth()->user()->last_name) }}</span>
                  <span class="user-role">{{ Str::upper(auth()->user()->role) }}</span>
              </li>
 
              <li class="tooltip">
                  <a class="icon-container {{ request()->is(auth()->user()->role . '/dashboard') ? 'active' : '' }}"
-                     href="{{ route('dashboard', auth()->user()->role) }}">
+                     href="{{ route(auth()->user()->role . '.dashboard') }}">
                      <i class="fa-solid fa-house-user nav-icon"></i>
                      <span class="tooltiptext">Dashboard</span>
                  </a>

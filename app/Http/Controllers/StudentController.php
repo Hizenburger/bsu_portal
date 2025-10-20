@@ -9,7 +9,8 @@ class StudentController extends Controller
 {
     public function dashboard()
     {
-        $announcements = Announcement::latest()->get();
-        return view('student.student-dashboard', compact('announcements'));
+        $announcements = Announcement::latest()->paginate(5);
+        $announcements->onEachSide(4);
+        return view('users.student.dashboard', compact('announcements'));
     }
 }

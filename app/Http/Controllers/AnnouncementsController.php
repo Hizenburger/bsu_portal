@@ -16,7 +16,9 @@ class AnnouncementsController extends Controller
         //eager loading to prevent multiple queries when looping
         $announcements = Announcement::with('user')->latest()->get();
 
-        return view('dashboard', ['announcements' => $announcements]);
+        $paginatedAnnouncements = Announcement::with('user')->latest()->paginate(5);
+
+        return view('dashboard', ['announcements' => $announcements, 'paginatedAnnouncements' => $paginatedAnnouncements]);
     }
 
     //return archieved announcements

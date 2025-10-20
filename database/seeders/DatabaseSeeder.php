@@ -24,38 +24,31 @@ class DatabaseSeeder extends Seeder
             'role' => 'admin',
             'profile_picture' => 'img/profile-pictures/MARCH7.jpg',
         ]);
+        User::create([
+            'first_name' => 'Student',
+            'last_name'  => 'User',
+            'email' => 'student@example.com',
+            'password' => bcrypt('password'),
+            'role' => 'student',
+            'profile_picture' => 'img/profile-pictures/kafka.jpg',
+        ]);
 
         Announcement::create([
-            'user_id' => 1,
-            'title' => 'First Announcement',
+            'user_id' => 2,
+            'title' => 'Student Announcement',
             'content' => 'This is the content of the first Announcement',
             'image_url' => 'img\announcements\announcement1.jpg'
         ]);
 
-        Announcement::create([
-            'user_id' => 1,
-            'title' => 'First Announcement',
-            'content' => 'This is the content of the first Announcement',
-        ]);
-        Announcement::create([
-            'user_id' => 1,
-            'title' => 'First Announcement',
-            'content' => 'This is the content of the first Announcement',
-        ]);
-        Announcement::create([
-            'user_id' => 1,
-            'title' => 'First Announcement',
-            'content' => 'This is the content of the first Announcement',
-        ]);
-        Announcement::create([
-            'user_id' => 1,
-            'title' => 'First Announcement',
-            'content' => 'This is the content of the first Announcement',
-        ]);
-        Announcement::create([
-            'user_id' => 1,
-            'title' => 'First Announcement',
-            'content' => 'This is the content of the first Announcement',
-        ]);
+        for ($i = 0; $i < 50; $i++) {
+            Announcement::create([
+                'user_id' => 1,
+                'title' => 'First Announcement',
+                'content' => 'This is the content of the first Announcement',
+                'image_url' => 'img\announcements\announcement2.webp'
+            ]);
+        }
+
+
     }
 }

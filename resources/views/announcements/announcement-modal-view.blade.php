@@ -1,10 +1,10 @@
 <!-- Image Preview Modal -->
 <div id="imageModal" class="fixed inset-0 bg-black/70 items-center justify-center flex hidden z-50">
-    <div class="relative max-w-4/5 max-h-fit w-full p-4 bg-white flex-col rounded-2xl">
+    <div class="relative max-w-4/5 max-h-screen w-full p-4 bg-white flex-col rounded-2xl">
 
         <!-- Full Image -->
         <div class="flex flex-col md:flex-row gap-2">
-            <div class="w-full border rounded-2xl p-2">
+            <div class="md:w-2/5 border rounded-2xl p-2">
                 {{-- poster details --}}
                 <div class="flex items-center mb-3">
                     <img src="{{ $announcement->user->profile_picture
@@ -28,18 +28,12 @@
 
                 <h3 class="text-lg font-bold">{{ $announcement->title }}</h3>
                 <p>{{ $announcement->content }}</p>
-                @if ($announcement->image_url)
-                    <div class="mt-2 announcement-image-container">
-                        <img src="{{ asset($announcement->image_url) }}" alt="Announcement Image"
-                            class="announcement-image cursor-pointer object-cover rounded-lg">
-                    </div>
-                @endif
+
             </div>
-            <img id="modalImage" src="" alt="Preview"
-                class="w-full h-auto max-h-[90vh] object-contain rounded-lg">
-
-
+            <div class="md:w-3/5 bg-gray-300">
+                <img id="modalImage" src="" alt="Preview"
+                    class="w-full h-auto max-h-[90vh] object-contain rounded-lg">
+            </div>
         </div>
-
     </div>
 </div>

@@ -55,14 +55,17 @@ Route::middleware('prevent-back-history')->group(function () {
     //admin routes
     Route::middleware('auth', 'role:admin')->group(function () {
         Route::get('admin/dashboard', [AdminController::class, 'dashboard'])
-            ->name('dashboard');
+            ->name('admin.dashboard');
+    });
+
+    Route::middleware('auth', 'role:student')->group(function () {
+        Route::get('student/dashboard', [StudentController::class, 'dashboard'])
+            ->name('student.dashboard');
     });
 
     //student routes
 
     Route::middleware('auth')->group(function () {
-        Route::get('student/dashboard', [StudentController::class, 'dashboard'])
-            ->name('dashboard');
 
         Route::post('/announcements/{announcement}/like', [LikeController::class, 'like'])->name('announcements.like');
         Route::delete('/announcements/{announcement}/like', [LikeController::class, 'unlike'])->name('announcements.unlike');

@@ -1,7 +1,5 @@
 <x-layouts.layout>
-    <x-slot:title>
-        Admin Dashboard
-    </x-slot:title>
+    @section('title', 'Admin Dashboard')
 
     <div class="text-center">
         <h1 class="text-4xl font-bold mb-4">Welcome {{ auth()->user()->first_name }} to the Admin Dashboard</h1>

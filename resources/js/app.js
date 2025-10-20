@@ -14,6 +14,16 @@ document.addEventListener("DOMContentLoaded", () => {
             e.preventDefault();
             sidebar.classList.toggle("collapsed");
         });
+
+        // Close sidebar when clicking outside
+        document.addEventListener("click", (e) => {
+            if (
+                !sidebar.contains(e.target) &&
+                !navImage.contains(e.target)
+            ) {
+                sidebar.classList.add("collapsed");
+            }
+        });
     }
 
     // Modal logic
