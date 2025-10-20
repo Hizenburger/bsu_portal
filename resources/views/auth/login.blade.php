@@ -9,6 +9,12 @@
                 <div class="md:w-1/2 px-8">
                     <h2 class="font-bold text-3xl text-white">Login</h2>
                     <p class="text-sm mt-4 text-white">Login to your BSU Account</p>
+                     <p class="text-sm mt-4 text-white">Login to your BSU Account</p>
+                      <p class="text-sm mt-4 text-white">Login to your BSU Account</p>
+                       <p class="text-sm mt-4 text-white">Login to your BSU Account</p>
+                        <p class="text-sm mt-4 text-white">Login to your BSU Account</p>
+                         <p class="text-sm mt-4 text-white">Login to your BSU Account</p>
+                          <p class="text-sm mt-4 text-white">Login to your BSU Account</p>
 
                     <form action="/login" method="POST" class="flex flex-col gap-4 text-white">
                         @csrf
