@@ -1,16 +1,19 @@
  @section('content')
-     <div class="w-fit mx-auto">
+     <div class="md:max-w-3/5 p-5 mx-auto">
          <h2 class="text-2xl font-bold mb-4 justify-self-center">Announcements</h2>
+         <div>
+
+         </div>
          @if ($announcements->count())
              <ul class="space-y-4">
                  @foreach ($announcements as $announcement)
-                     <li class="border rounded p-4">
+                     <li class="p-4 bg-white rounded-3xl">
                          <!-- User Info -->
                          <div class="flex items-center mb-3">
                              <img src="{{ $announcement->user->profile_picture
                                  ? asset($announcement->user->profile_picture)
                                  : asset('img/default-profile.jpg') }}"
-                                 alt="Profile Picture" class="w-10 h-10 rounded-full mr-3 object-cover">
+                                 alt="Profile Picture" class="w-15 h-15 rounded-full mr-3 object-cover">
                              <div>
                                  <h4 class="font-semibold">
                                      {{ Str::ucfirst($announcement->user->first_name) . ' ' . Str::ucfirst($announcement->user->last_name) }}
@@ -34,10 +37,12 @@
                          {{-- Like & Comment Count --}}
                          <div class="flex flex-row justify-between px-2.5 text-gray-500 text-sm">
                              <div class="like-container" data-announcement-id="{{ $announcement->id }}">
+
                                  <span class="like-number">{{ $announcement->likes()->count() }}</span>
                                  <span class="like-label">
                                      {{ Str::plural('like', $announcement->likes()->count()) }}
                                  </span>
+
                              </div>
                              <div>
                                  {{-- comments count here --}}
@@ -46,23 +51,20 @@
 
 
                          {{-- Like & Comment Actions --}}
-                         <div class="flex flex-row justify-between text-gray-500 border-t mt-1">
+                         <div class="flex flex-row justify-between  border-t mt-1">
                              {{-- LIKE BUTTON --}}
                              @auth
                                  <div class="like-btn flex justify-center items-center w-1/2 gap-2 hover:bg-gray-100 p-2 rounded-2xl cursor-pointer"
                                      data-announcement-id="{{ $announcement->id }}">
                                      @if ($announcement->isLikedBy(auth()->user()))
-                                         <i class="fa-solid fa-thumbs-up text-blue"></i>
+                                         <i class="fa-solid fa-thumbs-up"></i>
+                                         <span>Liked</span>
                                      @else
                                          <i class="fa-regular fa-thumbs-up"></i>
+                                         <span>Like</span>
                                      @endif
-                                     Like
+
                                  </div>
-                             @else
-                                 <a href="{{ route('login') }}" class="flex items-center gap-2 hover:text-blue-600">
-                                     <i class="fa-regular fa-thumbs-up"></i>
-                                     <span>Like</span>
-                                 </a>
                              @endauth
 
 
