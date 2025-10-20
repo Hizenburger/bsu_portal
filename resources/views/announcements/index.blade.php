@@ -1,6 +1,6 @@
  @section('content')
      <div class="w-fit mx-auto">
-         <h2 class="text-2xl font-bold mb-4 justify-self-center">Announcements</h2>
+         <h2 class="text-2xl font-bold mb-4 justify-self-center">Announcements POSTS</h2>
          @if ($announcements->count())
              <ul class="space-y-4">
                  @foreach ($announcements as $announcement)
