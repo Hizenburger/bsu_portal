@@ -66,6 +66,7 @@ document.addEventListener("DOMContentLoaded", () => {
         button.addEventListener("click", async () => {
             const id = button.dataset.announcementId;
             const icon = button.querySelector("i");
+            const span = button.querySelector("span");
             const countContainer = document.querySelector(
                 `.like-container[data-announcement-id="${id}"]`
             );
@@ -94,11 +95,13 @@ document.addEventListener("DOMContentLoaded", () => {
                         data.likes_count === 1 ? "like" : "likes";
 
                     if (isLiked) {
-                        icon.classList.remove("fa-solid", "text-blue");
+                        icon.classList.remove("fa-solid", "text-blue-500");
                         icon.classList.add("fa-regular");
+                        span.textContent = " Like";
                     } else {
                         icon.classList.remove("fa-regular");
-                        icon.classList.add("fa-solid", "text-blue");
+                        icon.classList.add("fa-solid", "text-blue-500");
+                        span.textContent = " Liked";
                     }
                 }
             } catch (error) {

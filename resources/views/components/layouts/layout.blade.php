@@ -17,23 +17,14 @@
 
 </head>
 
-<body>
-    <div class="relative min-h-screen md:flex">
+<body class="bg-gray-200">
+    <div class="relative min-h-screen md:flex ">
         <!-- sidebar -->
         @include('components.sidebar')
         <!-- Main Content -->
         <main class="w-screen">
-            <nav class="bg-bsu-green shadow-lg">
-                <div class="mx-auto px-2 sm:px-6 lg:px-8">
-                    <div class="relative flex items-center justify-between md:justify-end h-16">
-                        <div class="absolute inset-y-0 left-0 flex items-center">
-                            <button id="openSidebar" type="button"
-                                class="inline-flex items-center justify-center p-2 rounded cursor-pointer hover:bg-green-200">
-                                <i class="fa-solid fa-bars"></i>
-                            </button>
-                        </div>
-                    </div>
-                </div>
+            <nav class="bg-bsu-green shadow-lg h-15">
+                {{-- nav content --}}
             </nav>
             {{-- Page Content --}}
             <div>
