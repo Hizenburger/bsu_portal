@@ -39,38 +39,34 @@ class AnnouncementsController extends Controller
         return view('announcements.user', compact('announcements'));
     }
 
-    //create view or modal
-    public function create()
-    {
-        return view('');
-    }
-
     public function store(Request $request)
     {
-        //Validate that it is not empty and is a string
-        $validated = $request->validate(
-            [
-                'title' => 'required|string|max:255',
-                'content' => 'required|string',
-                'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
-            ]
-        );
+        // Validate inputs
+        $validated = $request->validate([
+            'title' => 'required|string|max:255',
+            'content' => 'required|string',
+            'image_url' => 'nullable|image|mimes:jpeg,png,jpg,gif,webp|max:2048',
+        ]);
 
-        if ($request->hasFile('image')) {
-            $image = $request->file('image');
+        // Attach the logged-in user ID
+        $validated['user_id'] = Auth::id();
+
+
+
+        // Handle image upload if provided
+        if ($request->hasFile('image_url')) {
+            $image = $request->file('image_url');
             $imageName = time() . '.' . $image->getClientOriginalExtension();
-            $image->storeAs('public/img/announcements', $imageName);
-
-            $validated['image'] = $imageName;
+            $image->storeAs('storage/app/public/img/announcements/', $imageName);
+            // Store only the path relative to "storage/"
+            $validated['image_url'] = 'storage/app/public/img/announcements/' . $imageName;
         }
 
-
-
-        //store in the database
+        // Save to database
         Announcement::create($validated);
 
-        //return to dashboard with success meassage stored in 'success'
-        return redirect()->route('dashboard')->with('success', 'Announcement is posted!');
+        // Redirect back with success message
+        return redirect()->back()->with('success', 'Announcement posted successfully!');
     }
 
     //pass the id of the announcement for identifying what to edit
@@ -121,5 +117,4 @@ class AnnouncementsController extends Controller
 
         return redirect()->route('dashboard')->with('success', 'Announcement deleted');
     }
-
 }

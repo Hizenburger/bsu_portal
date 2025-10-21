@@ -26,6 +26,22 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
+    //create Announcement modal logic
+    const createAnnouncementModal = document.getElementById("createAnnouncementModal");
+    const closeCreateAnnouncementBtn = document.getElementById("closeCreateAnnouncementBtn");
+
+    document.querySelectorAll(".create-announcement").forEach((anchor) => {
+        anchor.addEventListener("click", (e) => {
+            e.preventDefault();
+            createAnnouncementModal.classList.remove("hidden");
+        });
+    });
+
+    // Close modal on X button
+    closeCreateAnnouncementBtn.addEventListener("click", () => {
+        createAnnouncementModal.classList.add("hidden");
+    });
+
     // Modal logic
     const imageModal = document.getElementById("imageModal");
     const modalImage = document.getElementById("modalImage");
