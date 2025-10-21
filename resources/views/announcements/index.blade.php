@@ -1,7 +1,16 @@
  @section('content')
+
      <div class="md:max-w-3/5 p-5 mx-auto">
          <h2 class="text-2xl font-bold mb-4 justify-self-center">Announcements</h2>
-         <div>
+         <div class="bg-white rounded-3xl p-4 mb-4">
+
+             {{-- Announcement Creation Link --}}
+
+             <a
+                 class="create-announcement block w-full border border-gray-300 rounded-3xl px-4 py-2 text-gray-500 hover:bg-gray-100 cursor-pointer">
+                 What's on your mind, {{ Str::ucfirst(auth()->user()->first_name) }}?
+             </a>
+
 
          </div>
          @if ($announcements->count())
@@ -9,7 +18,9 @@
                  @foreach ($announcements as $announcement)
                      <li class="p-4 bg-white rounded-3xl">
                          <!-- User Info -->
+
                          <div class="flex items-center mb-3">
+
                              <img src="{{ $announcement->user->profile_picture
                                  ? asset($announcement->user->profile_picture)
                                  : asset('img/default-profile.jpg') }}"
@@ -29,7 +40,7 @@
                          <p>{{ $announcement->content }}</p>
                          @if ($announcement->image_url)
                              <div class="mt-2 announcement-image-container">
-                                 <img src="{{ asset($announcement->image_url) }}" alt="Announcement Image"
+                                 <img src="{{ asset($announcement->image_url) }}" alt="{{ $announcement->image_url }}"
                                      class="announcement-image cursor-pointer object-cover">
                              </div>
                          @endif
@@ -92,5 +103,6 @@
 
      {{-- modal view --}}
      @include('announcements.announcement-modal-view')
+     @include('announcements.create-announcement')
 
  @endsection

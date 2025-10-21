@@ -22,7 +22,7 @@ class DatabaseSeeder extends Seeder
             'email' => 'admin@example.com',
             'password' => bcrypt('password'),
             'role' => 'admin',
-            'profile_picture' => 'img/profile-pictures/MARCH7.jpg',
+            'profile_picture' => 'storage/app/private/public/img/profile-picture/MARCH7.jpg',
         ]);
         User::create([
             'first_name' => 'Student',
@@ -30,14 +30,14 @@ class DatabaseSeeder extends Seeder
             'email' => 'student@example.com',
             'password' => bcrypt('password'),
             'role' => 'student',
-            'profile_picture' => 'img/profile-pictures/kafka.jpg',
+            'profile_picture' => 'storage/img/announcements/kafka.jpg',
         ]);
 
         Announcement::create([
             'user_id' => 2,
             'title' => 'Student Announcement',
             'content' => 'This is the content of the first Announcement',
-            'image_url' => 'img\announcements\announcement1.jpg'
+            'image_url' => 'storage/img/announcements/announcement1.jpg'
         ]);
 
         for ($i = 0; $i < 50; $i++) {
@@ -45,7 +45,7 @@ class DatabaseSeeder extends Seeder
                 'user_id' => 1,
                 'title' => 'First Announcement',
                 'content' => 'This is the content of the first Announcement',
-                'image_url' => 'img\announcements\announcement2.webp'
+                'image_url' => 'storage/img/announcements/announcement2.webp'
             ]);
         }
 

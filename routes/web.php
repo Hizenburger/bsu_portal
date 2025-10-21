@@ -32,7 +32,6 @@ Route::get('/', function () {
 
 Route::middleware('prevent-back-history')->group(function () {
     Route::get('/announcements', [AnnouncementsController::class, 'index'])->name('announcements.index');
-    Route::get('/announcements/create', [AnnouncementsController::class, 'create'])->name('announcements.create');
     Route::post('/announcements', [AnnouncementsController::class, 'store'])->name('announcements.store');
     Route::get('/announcements/{id}/edit', [AnnouncementsController::class, 'edit'])->name('announcements.edit');
     Route::put('/announcements/{id}', [AnnouncementsController::class, 'update'])->name('announcements.update');
@@ -49,7 +48,7 @@ Route::middleware('prevent-back-history')->group(function () {
 
     //only logged in users Routes
     Route::middleware('auth')->group(function () {
-        Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
+        Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
     });
 
     //admin routes
