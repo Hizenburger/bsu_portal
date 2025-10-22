@@ -10,8 +10,6 @@
                  class="create-announcement block w-full border border-gray-300 rounded-3xl px-4 py-2 text-gray-500 hover:bg-gray-100 cursor-pointer">
                  What's on your mind, {{ Str::ucfirst(auth()->user()->first_name) }}?
              </a>
-
-
          </div>
          @if ($announcements->count())
              <ul class="space-y-4">
@@ -21,10 +19,8 @@
 
                          <div class="flex items-center mb-3">
 
-                             <img src="{{ $announcement->user->profile_picture
-                                 ? asset($announcement->user->profile_picture)
-                                 : asset('img/default-profile.jpg') }}"
-                                 alt="Profile Picture" class="w-15 h-15 rounded-full mr-3 object-cover">
+                             <img src="{{ asset($announcement->user->profile_picture) }}" alt="Profile Picture"
+                                 class="w-15 h-15 rounded-full mr-3 object-cover">
                              <div>
                                  <h4 class="font-semibold">
                                      {{ Str::ucfirst($announcement->user->first_name) . ' ' . Str::ucfirst($announcement->user->last_name) }}
@@ -34,13 +30,13 @@
                                  </small>
                              </div>
                          </div>
-
+                         
                          <!-- Announcement Content -->
                          <h3 class="text-lg font-bold">{{ $announcement->title }}</h3>
                          <p>{{ $announcement->content }}</p>
-                         @if ($announcement->image_url)
+                         @if ($announcement->image)
                              <div class="mt-2 announcement-image-container">
-                                 <img src="{{ asset($announcement->image_url) }}" alt="{{ $announcement->image_url }}"
+                                 <img src="{{ asset($announcement->image) }}" alt="{{ $announcement->image }}"
                                      class="announcement-image cursor-pointer object-cover">
                              </div>
                          @endif

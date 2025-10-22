@@ -26,8 +26,8 @@
             </div>
 
             <div class="mb-4">
-                <label for="image_url" class="block text-gray-700 font-semibold mb-2">Image (optional)</label>
-                <input type="file" id="image_url" name="image_url" alt="Login"
+                <label for="image" class="block text-gray-700 font-semibold mb-2">Image (optional)</label>
+                <input type="file" id="image" name="image" alt="Login"
                 class="w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2"/>
             </div>
 

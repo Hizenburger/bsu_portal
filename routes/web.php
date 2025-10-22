@@ -48,7 +48,7 @@ Route::middleware('prevent-back-history')->group(function () {
 
     //only logged in users Routes
     Route::middleware('auth')->group(function () {
-        Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
+        Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
     });
 
     //admin routes
