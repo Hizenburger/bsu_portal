@@ -41,33 +41,31 @@ class AnnouncementsController extends Controller
 
     public function store(Request $request)
     {
-        // Validate inputs
         $validated = $request->validate([
             'title' => 'required|string|max:255',
             'content' => 'required|string',
-            'image_url' => 'nullable|image|mimes:jpeg,png,jpg,gif,webp|max:2048',
+            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,webp',
+            'user_id',
         ]);
 
-        // Attach the logged-in user ID
-        $validated['user_id'] = Auth::id();
-
-
-
-        // Handle image upload if provided
-        if ($request->hasFile('image_url')) {
-            $image = $request->file('image_url');
-            $imageName = time() . '.' . $image->getClientOriginalExtension();
-            $image->storeAs('storage/app/public/img/announcements/', $imageName);
-            // Store only the path relative to "storage/"
-            $validated['image_url'] = 'storage/app/public/img/announcements/' . $imageName;
+        // Check if an image was uploaded
+        if ($request->hasFile('image')) {
+            // Store file in storage/app/public/img/announcements
+            $path = $request->file('image')->store('img/announcements', 'public');
+            // Convert to public-accessible path (for use with asset())
+            $imagePath = "storage/" . $path;
+            $validated['image'] = $imagePath;
         }
 
-        // Save to database
+        $validated['user_id'] = Auth::id();
+
+        // Create announcement with updated validated data
         Announcement::create($validated);
 
-        // Redirect back with success message
-        return redirect()->back()->with('success', 'Announcement posted successfully!');
+        return redirect()->route(Auth::user()->role . '.dashboard')->with('success', 'Announcement created successfully');
     }
+
+
 
     //pass the id of the announcement for identifying what to edit
     public function edit($id)
@@ -104,6 +102,7 @@ class AnnouncementsController extends Controller
             $image->storeAs('public/img/announcements', $imageName);
             $validated['image'] = $imageName;
         }
+
 
         // -> calls the update method and stores the changes
         $announcement->update($validate);
